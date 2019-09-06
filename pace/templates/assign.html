@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="card my-5">
+        <img src="{{assign.image.url}}" alt="" class="card-img-top">
+        <div class="card-body">
+            <p class="h1 card-title">{{assign.topic}}</p>
+            <p class="h2 card-subtitle my-2">by <a href="{% url 'profile' assign.user.username %}">{{assign.user.username}}</a></p>
+            <p class="card-text">Posted on {{assign.pub_date | date}}</p>
+            <p class="card-text mt-2"><b>Description:</b> {{assign.description}}</p>
+</div>
+{% endblock %}

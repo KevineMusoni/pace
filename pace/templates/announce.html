@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="card my-5">
+        <img src="{{announce.image.url}}" alt="" class="card-img-top">
+        <div class="card-body">
+            <p class="h1 card-title">{{announce.title}}</p>
+            <p class="h2 card-subtitle my-2">by <a href="{% url 'profile' announce.user.username %}">{{announce.user.username}}</a></p>
+            <p class="card-text">Posted on {{announce.pub_date | date}}</p>
+            <p class="card-text mt-2"><b>Description:</b> {{announce.description}}</p>
+</div>
+{% endblock %}

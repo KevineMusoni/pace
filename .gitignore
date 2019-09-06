@@ -1,0 +1,6 @@
+media/
+virtual/
+*.pyc
+.env
+foo/
+ENV/

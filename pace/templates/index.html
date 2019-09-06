@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="homepage">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+            .sub-title{
+                /* font-family: 'Great Vibes', cursive; */
+                font-size: 50px;
+                text-align: center;
+                color: black;
+            }
+            #homepage {
+                background-image: url("/static/img/img3.jpeg");
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                opacity: 0.6;
+
+            }
+            .akadomo{
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color:rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 4px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* .button{ */
+        .akad{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color:rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 20px;
+            /* padding: 12px 24px; */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        display: inline-block;/*avoids merging*/
+        text-decoration:none;
+        text-transform: uppercase;
+        border-width: 2px;
+        border-style: solid;
+        padding: .5em 1.75em;
+        }
+        .akad-a{
+        /* .button-accent{ */
+        color: white;
+        border-color: grey;
+        }
+        .akad-a:hover,
+        .akad-a:focus{
+        background:rgba(0, 0, 0, 0.5);
+        color: grey;
+        } 
+
+        </style>
+
+        <br><br>
+        <h2 class="sub-title"><b>"Welcome to MyPace!"</b></h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="#projects" class="akad .akad-a">View</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+   
+        
+
+    </div>
+    <br>
+
+    <div class="container">
+        <br id="projects">
+        <br>
+        <h1>Projects</h1>
+    <div class="row my-5">
+        {% for project in projects %}
+        <div class="col-md-4 d-flex" >
+            <div class="card mb-3 flex-fill">
+                <a href="{% url 'project' project.id %}">
+                    <img src="{{project.image.url}}" alt="image" class="card-img-top">
+                </a>
+                <div class="card-body">
+                    <h3 class="card-title">{{project.title}}</h3>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-subtitle"> by <a href="{% url 'profile' project.user %}">{{project.user}}</a></p>
+                        <p class="card-subtitle">{{project.pub_date | date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Assignments</h1>
+    <div class="row my-5">
+            {% for assign in assigns %}
+            <div class="col-md-4 d-flex" >
+                <div class="card mb-3 flex-fill">
+                    <a href="{% url 'assign' assign.id %}">
+                        <img src="{{assign.image.url}}" alt="image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{assign.topic}}</h3>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-subtitle"> by <a href="{% url 'profile' assign.user %}">{{assign.user}}</a></p>
+                            <p class="card-subtitle">{{assign.pub_date | date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    <h1>Announcements</h1>
+    <h5>"What's New?"</h5>
+    <div class="row my-5">
+            {% for announce in announces %}
+            <div class="col-md-4 d-flex" >
+                <div class="card mb-3 flex-fill">
+                    <a href="{% url 'announce' announce.id %}">
+                        <img src="{{announce.image.url}}" alt="image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{announce.title}}</h3>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-subtitle"> by <a href="{% url 'profile' project.user %}">{{announce.user}}</a></p>
+                            <p class="card-subtitle">{{announce.pub_date | date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</div>
+{% endblock %}
