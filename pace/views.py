@@ -48,21 +48,6 @@ def assign(request, id):
     if request.user.is_authenticated:
         user = User.objects.get(username = request.user)
     assign = Assign.objects.get(id = id)
-    # design = reviews.aggregate(Avg('design'))['design__avg']
-    # usability = reviews.aggregate(Avg('usability'))['usability__avg']
-    # content = reviews.aggregate(Avg('content'))['content__avg']
-    # average = reviews.aggregate(Avg('average'))['average__avg']
-    # if request.method == 'POST':
-    #     form = ReviewForm(request.POST)
-    #     if form.is_valid():
-    #         review = form.save(commit=False)
-    #         review.average = (review.design + review.usability + review.content) / 3
-    #         review.assign = assign
-    #         review.user = user
-    #         review.save()
-    #     return redirect('assign', id)
-    # else:
-    #     form = ReviewForm()
     return render(request, 'assign.html', {'assign': assign})
 
 def announce(request, id):
